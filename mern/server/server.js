@@ -1,4 +1,4 @@
-import express from "express";
+import express from "express"; // imports library that's used to create a server.
 import cors from "cors";
 import records from "./routes/record.js";
 
@@ -8,11 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/record", records);
-
-// Define a route for the root URL (may have to take this out later?)
-app.get("/", (req, res) => {
-  res.send("Server is up and running!");
-});
 
 // start the Express server
 app.listen(PORT, () => {
