@@ -1,3 +1,6 @@
+/* These directives are essential to load the full Tailwind CSS framework into your project, 
+providing a foundation for utility-first styling and ensuring all of Tailwind's functionality is available. */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
