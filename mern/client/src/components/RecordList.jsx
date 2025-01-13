@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"; // importing react hooks.
+import { Link } from "react-router-dom"; // a component used for navigation. 
 
-const Record = (props) => (
+
+// record is a functional component that defines how each record (row in table) is displayed. 
+// this component is called for each record in the data to render its details within the <tr/> element. 
+const Record = (props) => ( 
   <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
     <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
       {props.record.name}

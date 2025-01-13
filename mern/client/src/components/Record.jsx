@@ -1,5 +1,5 @@
 // importing hooks to manage states of a variable (useState) and 
-// performing side effects in function components (e.g., fetching data when a component mounts).
+// useEffect for performing side effects in function components (e.g., fetching data when a component mounts).
 import { useState, useEffect } from "react";   
 
 // import hooks useParams to access route parameters 
