@@ -1,7 +1,7 @@
 // a package that loads environment variables from a .env file into process.env.
 // this helps keep sensitive information like database credentials secure and separate from code.
 import dotenv from 'dotenv';
-dotenv.config(); // Reads and loads environment variables from .env file.
+dotenv.config(); // reads and loads environment variables from .env file.
 
 // MongoClient is used to interact with the MongoDB database, while
 // serverApiVersion defines which version of the MongoDB API to use for interactions.

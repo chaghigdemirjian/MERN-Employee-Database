@@ -1,7 +1,7 @@
 // this file will allow us to set up API endpoints.
 
 import express from "express"; // imports express library to handle routes.
-import db from "../db/connection.js"; // imports db object from connections.js to interact w/ the database.
+import db from "../db/connection.js"; // imports db object from connection.js to interact w/ the database.
 
 // imports ObjectId from MongoDB, which is used to convert string IDs
 // into MongoDB’s unique identifier format.
@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
   let results = await collection.find({}).toArray();
 
   // sends the array of documents (results) back to the client as the response.
-  // sets the HTTP response status to 200 OK, indicating the request was successful.
+  // sets the HTTP response status to 200, indicating the request was successful.
   res.send(results).status(200);
 });
 

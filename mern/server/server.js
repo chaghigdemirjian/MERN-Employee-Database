@@ -26,7 +26,7 @@ app.use(express.json());
 // delegating those requests to the routing logic defined in the record.js file.
 app.use("/record", records); // /record is the base path.
 
-// define a route for the root URL.
+// define a route for "/" URL.
 // This is an arrow function that handles the request. req is the request object containing information about
 // the HTTP request (e.g., headers, query parameters), and res is the response object
 // used to send a response back to the client.
@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
 
 
 // start the Express server to listen for incoming requests on the specified port.
-// includes an arrow function that gets executed whe the server starts successfully.
+// includes an arrow function that gets executed when the server starts successfully.
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
