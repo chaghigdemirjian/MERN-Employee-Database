@@ -3,25 +3,19 @@
 import express from "express"; // imports express library to handle routes.
 import db from "../db/connection.js"; // imports db object from connection.js to interact w/ the database.
 
-// imports ObjectId from MongoDB, which is used to convert string IDs
-// into MongoDB’s unique identifier format.
+// ObjectId is used to convert string IDs into MongoDB’s unique identifier format.
 import { ObjectId } from "mongodb";
 
-// router is an instance of the express router.
-// we will use the router instance to define route handlers like router.get(), router.post(), etc.
-// the router will be added as a middleware and will take control of requests starting with path /record (see server.js file).
+// we will use this express router instance to define route handlers like router.get(), router.post(), etc.
 const router = express.Router();
 
 // this section will help you get a list of all the records.
 
 // sets up an endpoint for GET requests to /record/.
-// when a request is made to /record/, this code will execute.
 router.get("/", async (req, res) => {
-  // accesses the "records" collection in the connected MongoDB database.
   let collection = await db.collection("records");
 
-  // finds all documents in the collection (no filter applied).
-  // converts the cursor (returned by find) into an array of documents.
+  // finds all documents in the collection (no filter applied) and converts result into array of documents.
   let results = await collection.find({}).toArray();
 
   // sends the array of documents (results) back to the client as the response.
@@ -32,11 +26,9 @@ router.get("/", async (req, res) => {
 
 // this section will help you get a single record by id.
 
-// handles GET requests at /id where id is the record's unique identifier.
-// the : before id is a placeholder indicating a dynamic route parameter.
-// whatever comes after /record/ in the URL is captured as the value of id
+// handles GET requests at /record/id where id is the record's unique identifier.
 router.get("/:id", async (req, res) => {
-  let collection = await db.collection("records"); // same as above function.
+  let collection = await db.collection("records"); 
 
   // extract id from the URL, convert the id to a MongoDB ObjectId,
   let query = { _id: new ObjectId(req.params.id) };  

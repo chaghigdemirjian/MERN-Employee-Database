@@ -1,14 +1,11 @@
-// a package that loads environment variables from a .env file into process.env.
-// this helps keep sensitive information like database credentials secure and separate from code.
-import dotenv from 'dotenv';
-dotenv.config(); // reads and loads environment variables from .env file.
+import dotenv from 'dotenv'; // For loading environment variables.
+dotenv.config(); // loads environment variables from .env file.
 
 // MongoClient is used to interact with the MongoDB database, while
 // serverApiVersion defines which version of the MongoDB API to use for interactions.
 import { MongoClient, ServerApiVersion } from "mongodb";
 
 // retrieves the MongoDB connection string (URI) from the environment variables (set in .env) under ATLAS_URI.
-// if it's not found, it defaults to an empty string.
 const URI = process.env.ATLAS_URI || "";
 
 // creates an instance of MongoClient with the URI for the MongoDB server and additional configuration options.
@@ -21,9 +18,7 @@ const client = new MongoClient(URI, {
 });
 
 try {
-  // connects to the MongoDB server asynchronously.
-  // the await ensures the program waits for the connection to establish before proceeding.
-  // other tasks or functions across the program can continue executing in parallel while waiting for this.  
+  // connects to the MongoDB server asynchronously. 
   await client.connect();  
  
   // executes a ping command on the admin database to check if the connection is working.
@@ -41,7 +36,5 @@ try {
 // if the database doesn’t exist, MongoDB will create it when data is written to it.
 let db = client.db("employees");
 
-// exports the db instance (representing the "employees" database)
-// so it can be used in other parts of the project.
 export default db;
 

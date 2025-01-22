@@ -5,9 +5,9 @@ A simple, interactive, full-stack Employee Database application built using the 
 ## Features
 
 - **Employee Records**: Create, read, update and delete (CRUD) operations for employee records. 
-- **Employee Details**: a user types an employee's name, position and choose a rank from 3 predefined levels. 
+- **Employee Details**: users can enter an employee's name, position and select a rank from 3 predefined levels. 
 - **Styling**: Responsive design using Tailwind CSS.  
-- **Routing**: **React Router** is used to navigate between the main home page, add record page, and edit record page.
+- **Routing**: **React Router** is used to navigate between the main home page, record page, and edit record page.
 
 ## Tech Stack
 
@@ -77,7 +77,7 @@ A simple, interactive, full-stack Employee Database application built using the 
       plugins: [],
     }
     ```
-5. Create a .env file in the server folder with the following:
+5. Create a .env file in the server folder with the following variables:
 
     ```bash
     MONGODB_URI=<Your MongoDB Atlas URI>  

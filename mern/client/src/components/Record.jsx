@@ -2,12 +2,13 @@
 // useEffect for performing side effects in function components (e.g., fetching data when a component mounts).
 import { useState, useEffect } from "react";   
 
-// import hooks useParams to access route parameters 
+// import hooks useParams to access route parameters. 
 // and useNavigate which allows programatic navigation.  
-import { useParams, useNavigate } from "react-router-dom"; // importing useparams
+import { useParams, useNavigate } from "react-router-dom"; 
 
 export default function Record() {
-  const [form, setForm] = useState({ // state that holds the current values of the form fiels. 
+  // state that holds the current values of the form fields. 
+  const [form, setForm] = useState({ 
     name: "",
     position: "",
     level: "",
@@ -18,17 +19,17 @@ export default function Record() {
   // params holds the route parameters such as id retrieved from useParams().
   const params = useParams();
 
-  // redirect programatically after form submission. 
+  // to redirect programatically after form submission. 
   const navigate = useNavigate();
 
   // this hook runs when the component mounts or when the params.id changes (URL parameter change).
-  // this functio is designed to fetch and populate data when user is editing a record. 
+  // this function is designed to fetch and populate data when user is editing a record. 
   useEffect(() => {
     async function fetchData() {
       // checks if params id exists
       const id = params.id?.toString() || undefined; 
-      if(!id) return; // function exit early if id doesn't exist. 
-      setIsNew(false); // if id exists, it implies the use is updating an existing record vs adding a new one.
+      if(!id) return; // function exits early if id doesn't exist. 
+      setIsNew(false); // if id exists, it implies the user is updating an existing record vs adding a new one.
       const response = await fetch(
         `http://localhost:5050/record/${params.id.toString()}`
       );
@@ -50,12 +51,9 @@ export default function Record() {
   }, [params.id, navigate]); // use effect runs whenever params.id or navigate changes. 
 
   // these methods will update the state properties.
-
-  // this is a function declaration. value is expected to be an object containing 
-  // key value pairs that represent updates to the form's state. 
+ 
   function updateForm(value) { 
-    // react's state updator function can take a callback function that provides
-    // the previous state (prev) as its argument. this ensures updates are based on the most recent state. 
+    
     return setForm((prev) => {  // (prev) => {} is a callback function allowing a state to acess previous value. 
       // updates the form's state by combining the previous state with new updates from value. 
       return { ...prev, ...value };
@@ -84,7 +82,7 @@ export default function Record() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(person), // (the form data) is converted to a JSON string and sent in the request body.
+          body: JSON.stringify(person), // (the form data) is converted to a JSON string and sends in the request body.
         });
       }
 
